@@ -14,7 +14,7 @@ Harvard.prototype.bindEvents = function () {
 
   };
 
-let page = 1;
+let page = 1000;
 
 Harvard.prototype.getObjects = function () {
   const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=${page}`

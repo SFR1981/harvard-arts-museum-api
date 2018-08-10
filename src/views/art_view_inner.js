@@ -15,24 +15,40 @@ ArtViewInner.prototype.render = function () {
   title.textContent = this.object.title;
   this.container.appendChild(title);
 
-if (this.object.primaryimageurl){
+if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   const objectImage = document.createElement('img');
   objectImage.src = this.object.primaryimageurl;
   this.container.appendChild(objectImage);
+  console.log(this.object.images);
+  this.object.images.forEach((image) =>{
+    console.log(image.baseimageurl);
+  })
+// }else if (this.object.images[primaryimageurl] !== null) {
+//
+//   const objectImage = document.createElement('img');
+  //
+  // console.log(this.object.images);
+  //objectImage.src = this.object.images.first[baseimageurl];
+  // this.container.appendChild(objectImage);
 }else{
   const objectImage = document.createElement('p');
   objectImage.textContent = "no primary image";
   this.container.appendChild(objectImage);
-}
+};
 
+  //
+  // const description = document.createElement('h4');
+  // description.classList.add('description_header')
+  // description.textContent = "Description:"
+  // this.container.appendChild(description);
+    if (this.object.description){
+      const descriptionContent = document.createElement('p');
+      descriptionContent.classList.add('description')
+      descriptionContent.textContent = this.object.description;
 
-  const description = document.createElement('h4');
-  description.classList.add('description_header')
-  description.textContent = "Description:"
-  this.container.appendChild(description);
-  const descriptionContent = document.createElement('p');
-  descriptionContent.textContent = this.object.description;
-  this.container.appendChild(descriptionContent);
+      this.container.appendChild(descriptionContent);
+    }
+
 
 
 };
