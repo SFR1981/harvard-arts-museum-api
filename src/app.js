@@ -1,7 +1,11 @@
 const Harvard = require('./models/harvard.js');
-const SelectView = require('./views/art_view.js');
+const ArtView = require('./views/art_view.js');
+
 
 document.addEventListener('DOMContentLoaded', () => {
+  const displayArea = document.querySelector('div#art-infos')
+  const artView = new ArtView(displayArea);
+  artView.bindEvents();
   const harvard  = new Harvard();
   console.log("BOOM BABY");
   harvard.bindEvents();
