@@ -1,4 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
+const ArtViewInner = require('./art_view_inner.js');
 
 
 const ArtView = function (container) {
@@ -26,13 +27,15 @@ ArtView.prototype.bindEvents = function () {
 
 ArtView.prototype.render = function () {
   this.objects.records.forEach((object)=> {
-      console.log(object.title);
-    const objectName = document.createElement('p')
-    objectName.textContent = object.title;
-    this.container.appendChild(objectName);
+    const artViewInner = new ArtViewInner(this.container, object);
+    artViewInner.render();
+
 
   })
 };
+
+
+  
 
 //todo: nextpage -addEventListener click publishes nextpage, subscribed to by harvard, increments page
 // calls get all
