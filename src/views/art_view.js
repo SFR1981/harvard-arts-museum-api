@@ -10,6 +10,7 @@ ArtView.prototype.bindEvents = function () {
   PubSub.subscribe('Harvard:objects-ready', (evt) => {
     this.objects = evt.detail;
     console.log(this.objects.records);
+    console.log(this.objects.info.pages);
 
     this.render();
   });
@@ -32,6 +33,16 @@ ArtView.prototype.render = function () {
 
   })
 };
+
+//todo: nextpage -addEventListener click publishes nextpage, subscribed to by harvard, increments page
+// calls get all
+
+
+// there are over 200,000 objects, it is not practical to paginate  that , it would need 2000 pages!
+//todo : return by sorted - choose options to sort by , enter value, add into url, keep old url? (don't reset unless user has chosen to- with event listenr - this allows for incremental search refinement)
+
+
+
 //     const munroContainer = document.createElement('div');
 // munroContainer.classList.add('munro');
 //
