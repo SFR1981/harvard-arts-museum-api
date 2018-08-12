@@ -37,7 +37,7 @@ Harvard.prototype.getClassifications = function () {
 
 Harvard.prototype.getThisClassification = function (field, value) {
 
-  const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&q=${field}:${value}&size=100&&sort=imagecount&sortorder=desc`
+  const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&q=${field}:${value}*&size=100&&sort=imagecount&sortorder=desc`
   const request = new Request(url);
   console.log(url);
   request.get((data) => {
