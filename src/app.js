@@ -3,6 +3,7 @@ const ArtView = require('./views/art_view.js');
 const SelectView = require('./views/select_view.js');
 const StatisticsSelect = require('./views/statistics_select.js')
 const StatisticsView = require('./views/statistics_view.js');
+const YearView = require('./views/year_view.js')
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,9 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const statisticsDisplay = document.querySelector('#statistics-view')
   const statisticsView = new StatisticsView(statisticsDisplay);
   statisticsView.bindEvents();
+  const yearInput = document.querySelector('form');
+  const yearView = new YearView(yearInput);
+  yearView.bindEvents();
 
   const harvard  = new Harvard();
-  console.log("BOOM BABY");
+
   harvard.bindEvents();
 
 

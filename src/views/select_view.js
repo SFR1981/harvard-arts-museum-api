@@ -22,7 +22,8 @@ SelectView.prototype.bindEvents = function () {
 
   this.selection.addEventListener('change', (evt) => {
     const selectedClass = evt.target.value;
-    this.harvard.getThisClassification(selectedClass);
+    const field = 'classification'
+    this.harvard.getThisClassification(field, selectedClass);
   });
 };
 
