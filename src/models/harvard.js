@@ -18,6 +18,7 @@ Harvard.prototype.bindEvents = function () {
       page = evt.detail;
     this.getObjects();
   })
+  
 
 
 };
@@ -74,6 +75,35 @@ Harvard.prototype.getObjects = function () {
 
     })
   }
+
+
+  Harvard.prototype.getStatistics = function () {
+    const url = `https://api.harvardartmuseums.org/object?apikey=${API_KEY}&aggregation={"by_classification":{"terms":{"field":"classification"}}}&size=0`
+     const request = new Request(url);
+
+     request.get((data) => {
+      this.data = data;
+
+      PubSub.publish("Harvard:stats-ready", this.data);
+     })
+   };
+
+  Harvard.prototype.getYearStats = function () {
+
+
+      const url = `https://api.harvardartmuseums.org/object?apikey=${API_KEY}&aggregation={"by_classification":{"terms":{"field":"dated"}}}&size=0`
+       const request = new Request(url);
+
+      request.get((data) => {
+       this.data = data;
+       console.log(this.data);
+
+       PubSub.publish("Harvard:stats-ready", this.data);
+      })
+
+};
+
+
 
 
 // todo: aggregate function drop down list

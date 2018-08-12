@@ -11,7 +11,6 @@ const SelectView = function (selection) {
 SelectView.prototype.bindEvents = function () {
 
   PubSub.subscribe('Harvard:dropdown-classification', (evt) => {
-    console.log(this.selection);
 
     const allClassifications = evt.detail;
     console.log(allClassifications);

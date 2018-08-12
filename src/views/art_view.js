@@ -1,10 +1,13 @@
 const PubSub = require('../helpers/pub_sub.js');
 const ArtViewInner = require('./art_view_inner.js');
+const Harvard = require('../models/harvard.js');
 
 
 const ArtView = function (container) {
   this.container = container;
   this.objects = null;
+  this.harvard = new Harvard();
+
 }
 
 ArtView.prototype.bindEvents = function () {
@@ -16,10 +19,23 @@ ArtView.prototype.bindEvents = function () {
 
     this.render();
 
+   PubSub.subscribe('Harvard:stats-ready', evt =>{
+     this.reset();
+
+   })
+
 
 
   });
 }
+
+
+
+ArtView.prototype.reset = function () {
+  this.container.innerHTML = "";
+
+
+};
 
 ArtView.prototype.render = function () {
 
@@ -42,6 +58,14 @@ console.log(this.objects.info.page);
       this.container.appendChild(prev);
 
     };
+
+    const randomPage = document.createElement('a');
+    randomPage.textContent = 'show a random page';
+    randomPage.addEventListener("click", ()=> {
+    this.harvard.getRandomPage();
+       });
+    this.container.appendChild(randomPage);
+
 
     if (this.objects.info.next){
       const next = document.createElement('a');
@@ -71,12 +95,6 @@ console.log(this.objects.info.page);
 
 
 
-
-ArtView.prototype.reset = function () {
-  this.container.innerHTML = "";
-
-
-};
 
 
 
