@@ -13,10 +13,7 @@ const ArtView = function (container) {
 ArtView.prototype.bindEvents = function () {
   PubSub.subscribe('Harvard:objects-ready', (evt) => {
     this.objects = evt.detail;
-    // console.log(this.objects.records);
-   console.log("PAGE LOAD");
-     this.container.innerHTML = "";
-
+    this.container.innerHTML = "";
     this.render();
 
    PubSub.subscribe('Harvard:stats-ready', evt =>{
@@ -42,7 +39,6 @@ ArtView.prototype.render = function () {
 
     const page = document.createElement('h6');
     page.classList.add('page');
-console.log(this.objects.info.page);
     page.textContent = `viewing page ${this.objects.info.page} of ${this.objects.info.pages}`;
     this.container.appendChild(page);
 
@@ -53,7 +49,7 @@ console.log(this.objects.info.page);
       prev.textContent = "previous page ";
       prev.addEventListener('click', ()=> {
       PubSub.publish('ArtView:changePage', this.objects.info.page-1);
-      console.log("PREV");
+
     });
       this.container.appendChild(prev);
 
@@ -84,6 +80,7 @@ console.log(this.objects.info.page);
     hoverToEnlarge.textContent = 'Hover over an image to enlarge'
     this.container.appendChild(hoverToEnlarge);
 
+// nested view
   this.objects.records.forEach((object)=> {
     const artViewInner = new ArtViewInner(this.container, object);
     artViewInner.render();

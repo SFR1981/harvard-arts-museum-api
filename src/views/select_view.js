@@ -11,19 +11,15 @@ const SelectView = function (selection) {
 SelectView.prototype.bindEvents = function () {
 
   PubSub.subscribe('Harvard:dropdown-classification', (evt) => {
-
     const allClassifications = evt.detail;
-    console.log(allClassifications);
-
-  this.populate(allClassifications);
-  //add search by year - then do css
+    this.populate(allClassifications);
 
   });
 
   this.selection.addEventListener('change', (evt) => {
     const selectedClass = evt.target.value;
     const field = 'classification'
-    this.harvard.getThisClassification(field, selectedClass);
+    this.harvard.search(field, selectedClass);
   });
 };
 

@@ -14,7 +14,7 @@ YearView.prototype.bindEvents = function () {
     const year = evt.target[0].value
     console.log(evt.target[0].value);
     const field =  'dated'
-   this.harvard.getThisClassification(field, year);
+   this.harvard.search(field, year);
   })
 
 

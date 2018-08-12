@@ -17,7 +17,7 @@ ArtViewInner.prototype.render = function () {
 
 if (this.object.people){
   this.object.people.forEach((person) => {
-  
+
     const artist = document.createElement('p');
     artist.textContent = person.name;
     this.container.appendChild(artist);
@@ -39,7 +39,7 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   this.container.appendChild(objectImage);
 
   this.object.images.forEach((image) =>{
-    // console.log(image.baseimageurl);
+
   })
 
 }else{
@@ -48,11 +48,7 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   this.container.appendChild(objectImage);
 };
 
-  //
-  // const description = document.createElement('h4');
-  // description.classList.add('description_header')
-  // description.textContent = "Description:"
-  // this.container.appendChild(description);
+
     if (this.object.description){
       const descriptionContent = document.createElement('p');
       descriptionContent.classList.add('description')
@@ -62,20 +58,7 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
     }
 
 
-
 };
-  //
-  // this.container.appendChild(name);
-  // const miniList = document.createElement('ul');
-  // const height = document.createElement('li');
-  // height.textContent = `Height: ${this.munro.height}m`;
-  // miniList.appendChild(height);
-  // const meaning = document.createElement('li');
-  // meaning.textContent = `Meaning: ${this.munro.meaning}`;
-  // miniList.appendChild(meaning);
-  // this.container.appendChild(miniList);
-
-
 
 
 module.exports = ArtViewInner;
