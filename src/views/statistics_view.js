@@ -13,6 +13,10 @@ const StatisticsView = function (container) {
 
 
 StatisticsView.prototype.bindEvents = function () {
+  PubSub.subscribe('Harvard:objects-ready', (evt) => {
+
+     this.container.innerHTML = "";
+   })
   PubSub.subscribe("Harvard:stats-ready", evt =>{
 
     const stats = evt.detail.aggregations.by_classification.buckets;
