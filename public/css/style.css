@@ -1,9 +1,26 @@
+body {
+  background-color: #D1B6E1
+}
+
+h1 {
+  font-family: 'Berkshire Swash', cursive;
+}
+
 img {
   width : 20vw;
 
 }
 
+div#statistics {
+  width : 40vw;
+}
 
 img:hover {
-  width: 100vw;
+  width: 60vw;
+}
+
+
+a {
+  margin-left: 10px ;
+  margin-right:  10px;
 }

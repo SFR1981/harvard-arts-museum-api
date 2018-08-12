@@ -13,30 +13,30 @@ ArtViewInner.prototype.render = function () {
   const title = document.createElement('h3');
 
   title.textContent = this.object.title;
-  this.container.appendChild(title);
+  objectContainer.appendChild(title);
 
 if (this.object.people){
   this.object.people.forEach((person) => {
 
     const artist = document.createElement('p');
     artist.textContent = person.name;
-    this.container.appendChild(artist);
+    objectContainer.appendChild(artist);
   });
 };
 
 const date = document.createElement('p');
 date.textContent = `dated: ${this.object.dated}`;
-this.container.appendChild(date);
+objectContainer.appendChild(date);
 const classification = document.createElement('p');
 classification.textContent = `classification: ${this.object.classification}`;
-this.container.appendChild(classification);
+objectContainer.appendChild(classification);
 
 
 if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   const objectImage = document.createElement('img');
   objectImage.src = this.object.primaryimageurl;
   objectImage.classList.add('image');
-  this.container.appendChild(objectImage);
+  objectContainer.appendChild(objectImage);
 
   this.object.images.forEach((image) =>{
 
@@ -45,7 +45,7 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
 }else{
   const objectImage = document.createElement('p');
   objectImage.textContent = "no primary image";
-  this.container.appendChild(objectImage);
+  objectContainer.appendChild(objectImage);
 };
 
 
@@ -54,9 +54,9 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
       descriptionContent.classList.add('description')
       descriptionContent.textContent = this.object.description;
 
-      this.container.appendChild(descriptionContent);
+      objectContainer.appendChild(descriptionContent);
     }
-
+ this.container.appendChild(objectContainer);
 
 };
 

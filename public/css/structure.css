@@ -1,0 +1,16 @@
+#art-infos div { margin: 3px; background: #9DC8C8; }
+
+
+p {
+  font-family: georgia, sans-serif;
+}
+
+div.object {
+
+  flex-grow: 4;
+  background-color:
+  color: ##011638;
+  border-style: none;
+  margin: none;
+
+}
