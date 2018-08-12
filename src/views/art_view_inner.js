@@ -18,6 +18,7 @@ ArtViewInner.prototype.render = function () {
 if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   const objectImage = document.createElement('img');
   objectImage.src = this.object.primaryimageurl;
+  objectImage.classList.add('image');
   this.container.appendChild(objectImage);
 
   this.object.images.forEach((image) =>{

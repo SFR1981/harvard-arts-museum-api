@@ -11,7 +11,7 @@ ArtView.prototype.bindEvents = function () {
   PubSub.subscribe('Harvard:objects-ready', (evt) => {
     this.objects = evt.detail;
     // console.log(this.objects.records);
-    // console.log(this.objects.info.pages);
+   console.log(this.objects.info.page);
 
     this.render();
   });
@@ -26,6 +26,12 @@ ArtView.prototype.bindEvents = function () {
 // };
 
 ArtView.prototype.render = function () {
+
+    const page = document.createElement('h6');
+    page.classList.add('page');
+console.log(this.objects.info.page);
+    page.textContent = `viewing page ${this.objects.info.page} of ${this.objects.info.pages}`;
+    this.container.appendChild(page);
   this.objects.records.forEach((object)=> {
     const artViewInner = new ArtViewInner(this.container, object);
     artViewInner.render();
