@@ -10,8 +10,8 @@ const ArtView = function (container) {
 ArtView.prototype.bindEvents = function () {
   PubSub.subscribe('Harvard:objects-ready', (evt) => {
     this.objects = evt.detail;
-    console.log(this.objects.records);
-    console.log(this.objects.info.pages);
+    // console.log(this.objects.records);
+    // console.log(this.objects.info.pages);
 
     this.render();
   });
@@ -35,7 +35,7 @@ ArtView.prototype.render = function () {
 };
 
 
-  
+
 
 //todo: nextpage -addEventListener click publishes nextpage, subscribed to by harvard, increments page
 // calls get all

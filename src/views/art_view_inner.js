@@ -19,17 +19,11 @@ if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   const objectImage = document.createElement('img');
   objectImage.src = this.object.primaryimageurl;
   this.container.appendChild(objectImage);
-  console.log(this.object.images);
+
   this.object.images.forEach((image) =>{
-    console.log(image.baseimageurl);
+    // console.log(image.baseimageurl);
   })
-// }else if (this.object.images[primaryimageurl] !== null) {
-//
-//   const objectImage = document.createElement('img');
-  //
-  // console.log(this.object.images);
-  //objectImage.src = this.object.images.first[baseimageurl];
-  // this.container.appendChild(objectImage);
+
 }else{
   const objectImage = document.createElement('p');
   objectImage.textContent = "no primary image";
