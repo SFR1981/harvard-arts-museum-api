@@ -10,15 +10,28 @@ const Harvard = function () {
 }
 
 Harvard.prototype.bindEvents = function () {
-  console.log(API_KEY);
+    this.getRandomPage();
 
-  this.getRandomPage();
-  // console.log(page);
-  // this.getObjects();
+    PubSub.subscribe("ArtView:changePage", (evt) =>{
+      console.log(evt.detail);
+      page = evt.detail;
+    this.getObjects();
+  })
 
 
   };
-
+//
+// Harvard.prototype.getPage = function () {
+//   const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=${page}`
+//    const request = new Request(url);
+//    console.log(url);
+//    request.get((data) => {
+//     this.data = data;
+//      //
+//      // console.log(this.data);
+//      PubSub.publish("Harvard:objects-ready", this.data);
+//
+// };
 
 Harvard.prototype.getObjects = function () {
   const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=${page}`
@@ -26,12 +39,10 @@ Harvard.prototype.getObjects = function () {
    console.log(url);
    request.get((data) => {
     this.data = data;
-     //
-     // console.log(this.data);
+     console.log(this.data);
      PubSub.publish("Harvard:objects-ready", this.data);
    })
  }
-
 
  Harvard.prototype.getRandomPage = function () {
    const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=1`
@@ -44,9 +55,7 @@ Harvard.prototype.getObjects = function () {
       console.log(page);
       this.getObjects();
 
-      //
-      //
-      // PubSub.publish("Harvard:objects-ready", this.data);
+
     })
   }
 

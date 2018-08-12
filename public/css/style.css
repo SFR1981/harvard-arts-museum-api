@@ -1,4 +1,9 @@
 img {
   width : 20vw;
-  
+
+}
+
+
+img:hover {
+  width: 100vw;
 }
