@@ -4,18 +4,21 @@ const API_KEY = require('../helpers/api_key.js');
 
 const Harvard = function () {
   this.data = null;
-  const page = null;
+  page = null;
+  const pages = null;
 
 }
 
 Harvard.prototype.bindEvents = function () {
   console.log(API_KEY);
-  //this.getObjects();
-  this.getNumberOfPages();
+
+  this.getRandomPage();
+  // console.log(page);
+  // this.getObjects();
+
 
   };
 
-let page = 1000;
 
 Harvard.prototype.getObjects = function () {
   const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=${page}`
@@ -23,23 +26,27 @@ Harvard.prototype.getObjects = function () {
    console.log(url);
    request.get((data) => {
     this.data = data;
-
-     console.log(this.data);
+     //
+     // console.log(this.data);
      PubSub.publish("Harvard:objects-ready", this.data);
    })
  }
 
 
- Harvard.prototype.getNumberOfPages = function () {
+ Harvard.prototype.getRandomPage = function () {
    const url = `https://api.harvardartmuseums.org/object\?apikey=${API_KEY}&size=100&page=1`
     const request = new Request(url);
 
     request.get((data) => {
      this.data = data;
-     console.log(this.data);
+     // console.log(this.data.info.pages);
+     page = Math.floor(Math.random() * (this.data.info.pages - 1 + 1)) + 1;
+      console.log(page);
+      this.getObjects();
 
-      
-      PubSub.publish("Harvard:objects-ready", this.data);
+      //
+      //
+      // PubSub.publish("Harvard:objects-ready", this.data);
     })
   }
 
