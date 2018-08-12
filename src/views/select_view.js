@@ -10,26 +10,31 @@ const SelectView = function (selection) {
 
 SelectView.prototype.bindEvents = function () {
 
-  PubSub.subscribe('Harvard:dropdown-region', (evt) => {
-    console.log(evt);
-    const allRegions = evt.detail;
-    console.log(allRegions);
-    this.populate(allRegions);
+  PubSub.subscribe('Harvard:dropdown-classification', (evt) => {
+    console.log(this.selection);
+
+    const allClassifications = evt.detail;
+    console.log(allClassifications);
+
+  this.populate(allClassifications);
 
   });
 
   this.selection.addEventListener('change', (evt) => {
-    const selectedRegion = evt.target.value;
-    this.munros.getFilteredData(selectedRegion);
+    const selectedClass = evt.target.value;
+    this.harvard.getThisClassification(selectedClass);
   });
 };
 
-SelectView.prototype.populate = function(allRegions){
-  allRegions.forEach((region, index) => {
-    const option = document.createElement('option');
-    option.textContent = region;
-    option.value = region;
-    this.selection.appendChild(option);
+SelectView.prototype.populate = function(allClassifications){
+  allClassifications.forEach((classification, index) => {
+    console.log(classification.key);
+     const option = document.createElement('option');
+     option.textContent = classification.key;
+     option.value = classification.key;
+
+
+     this.selection.appendChild(option);
 
 
   })

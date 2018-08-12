@@ -22,4 +22,8 @@ RequestHelper.prototype.getFilteredData = function () {
     .then(res => res.json());
 }
 
+
+
+
+
 module.exports = RequestHelper;

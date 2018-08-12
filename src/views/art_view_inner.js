@@ -15,6 +15,23 @@ ArtViewInner.prototype.render = function () {
   title.textContent = this.object.title;
   this.container.appendChild(title);
 
+if (this.object.people){
+  this.object.people.forEach((person) => {
+  
+    const artist = document.createElement('p');
+    artist.textContent = person.name;
+    this.container.appendChild(artist);
+  });
+};
+
+const date = document.createElement('p');
+date.textContent = `dated: ${this.object.dated}`;
+this.container.appendChild(date);
+const classification = document.createElement('p');
+classification.textContent = `classification: ${this.object.classification}`;
+this.container.appendChild(classification);
+
+
 if (this.object.primaryimageurl){   //if null image = this.object.images[0]
   const objectImage = document.createElement('img');
   objectImage.src = this.object.primaryimageurl;
